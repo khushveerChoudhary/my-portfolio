@@ -1,5 +1,3 @@
-// SKILLS Component (src/components/Skills.js)
-// =========================================================================
 export const Skills = () => (
     <section id="skills" className="section section-skills">
         <div className="container">
@@ -25,3 +23,4 @@ export const Skills = () => (
         </div>
     </section>
 );
+export default Skills;

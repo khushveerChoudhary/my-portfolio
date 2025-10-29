@@ -1,8 +1,9 @@
 // src/components/Projects.js
 
 import React from 'react';
+import { motion } from 'framer-motion'; 
 
-// Your project data
+// Paste the missing data array here!
 const projectData = [
   {
     name: "Voice-to-Face Generator",
@@ -20,28 +21,39 @@ const projectData = [
     tech: ["Python", "OpenCV", "dlib", "winsound"]
   },
 ];
-
 const Projects = () => {
-  return (
-    <section id="projects" className="section section-projects">
-      <div className="container">
-          <h2 className="section-title">Featured Projects</h2>
-          
-          {projectData.map((project, index) => (
-            // This card is where you would apply a scroll-reveal animation
-            <div className="project-card" key={index}>
-                <h3>{`${index + 1}. ${project.name}`}</h3>
-                <p className="project-desc">{project.description}</p>
-                <div className="project-tech-list">
-                    {project.tech.map((t, i) => <span key={i}>{t}</span>)}
-                </div>
-                <a href="#" className="project-link" aria-label={`View code for ${project.name}`}>View Code →</a>
-            </div>
-          ))}
+    const cardAnimation = {
+        initial: { opacity: 0, y: 50 },
+        whileInView: { opacity: 1, y: 0, transition: { duration: 0.7 } },
+        viewport: { once: true, amount: 0.3 }
+    };
 
-      </div>
-    </section>
-  );
+    return (
+        <section id="projects" className="section section-projects">
+            <div className="container">
+                <motion.h2 
+                    className="section-title"
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                >
+                    Featured Projects
+                </motion.h2>
+
+                {projectData.map((project, index) => (
+                    <motion.div 
+                        className="project-card mica-panel" // Apply Mica/Glass to the card
+                        key={index}
+                        {...cardAnimation}
+                    >
+                        <h3>{`${index + 1}. ${project.name}`}</h3>
+                        <p className="project-desc">{project.description}</p>
+                        {/* ... rest of project card content ... */}
+                    </motion.div>
+                ))}
+            </div>
+        </section>
+    );
 };
 
 export default Projects;

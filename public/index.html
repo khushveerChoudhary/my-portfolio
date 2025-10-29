@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Khushveer — Portfolio</title>
+
+  <!-- Google font (Inter) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+  /* =========================
+     Apple VisionOS - Dark Glossy Portfolio
+     Single-file copy/paste (HTML + CSS)
+     ========================= */
+
+  :root{
+    --bg-1: #2b0a3b;   /* deep purple */
+    --bg-2: #170617;   /* near black */
+    --accent-1: #a88bff;  /* soft purple */
+    --accent-2: #6bc3ff;  /* soft blue */
+    --glass: rgba(255,255,255,0.06);
+    --glass-strong: rgba(255,255,255,0.09);
+    --glass-border: rgba(255,255,255,0.16);
+    --text: #f6f6fb;
+    --muted: rgba(255,255,255,0.55);
+    --radius-lg: 28px;
+    --radius-md: 16px;
+    --shadow-1: 0 8px 30px rgba(0,0,0,0.6);
+    --glass-blur: 28px;
+    --max-width: 1100px;
+  }
+
+  /* Reset */
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.5;
+    background: linear-gradient(180deg, var(--bg-1) 0%, #180824 45%, var(--bg-2) 100%);
+    background-attachment: fixed;
+    min-height:100vh;
+    padding-top:84px; /* header height spacing */
+  }
+
+  /* ===== Header (liquid glass, centered) ===== */
+  .header {
+    position:fixed;
+    left:0;right:0;top:12px;
+    margin:auto;
+    width: calc(100% - 40px);
+    max-width: calc(var(--max-width));
+    z-index:1100;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:28px;
+    padding:14px 22px;
+    border-radius: 20px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(26px) saturate(150%);
+    -webkit-backdrop-filter: blur(26px) saturate(150%);
+    box-shadow: var(--shadow-1);
+  }
+
+  /* Left small brand + centered nav */
+  .brand {
+    position:absolute;
+    left:24px;
+    top:50%;
+    transform:translateY(-50%);
+    font-weight:800;
+    letter-spacing:0.2px;
+    color:var(--text);
+    text-decoration:none;
+    font-size:1.05rem;
+  }
+
+  .nav {
+    display:flex;
+    gap:36px;
+    align-items:center;
+  }
+  .nav a {
+    color:var(--text);
+    font-weight:600;
+    text-decoration:none;
+    padding:6px 0;
+    transition:color .2s, text-shadow .25s;
+  }
+  .nav a:hover{
+    color:var(--accent-2);
+    text-shadow: 0 0 12px rgba(107,195,255,0.25);
+  }
+
+  /* CTA button right */
+  .header-cta {
+    position:absolute;
+    right:20px;
+    top:50%;
+    transform:translateY(-50%);
+  }
+  .btn {
+    display:inline-block;
+    background: linear-gradient(90deg,var(--accent-1),var(--accent-2));
+    color:#071126;
+    font-weight:700;
+    padding:10px 16px;
+    border-radius:12px;
+    box-shadow: 0 6px 26px rgba(106,163,255,0.12);
+    text-decoration:none;
+    font-size:0.95rem;
+  }
+
+  /* ===== Main layout ===== */
+  main{
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 30px 22px 80px;
+  }
+
+  .section {
+    margin: 30px 0 60px;
+    width:100%;
+  }
+
+  .hero {
+    display:flex;
+    gap:28px;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    text-align:center;
+    padding: 36px 18px;
+  }
+
+  .hero h1{
+    font-size:2.6rem;
+    margin-bottom:8px;
+    letter-spacing:-0.6px;
+    line-height:1.02;
+  }
+  .hero p.lead{
+    color:var(--muted);
+    max-width:820px;
+    margin: 0 auto;
+    font-size:1.05rem;
+  }
+
+  /* ===== Glass Card style (used for about, skills, projects) ===== */
+  .glass {
+    background: var(--glass);
+    border-radius: var(--radius-lg);
+    padding: 34px;
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+    box-shadow:
+      0 12px 40px rgba(0,0,0,0.6),
+      inset 0 0 24px rgba(255,255,255,0.02);
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .glass:hover {
+    transform: translateY(-6px);
+    box-shadow:
+      0 20px 60px rgba(0,0,0,0.7),
+      inset 0 0 30px rgba(255,255,255,0.04);
+  }
+
+  /* Heading inside cards */
+  .card-title{
+    font-size:1.6rem;
+    font-weight:800;
+    margin-bottom:12px;
+    text-align:center;
+  }
+  .card-body { color:var(--text); font-size:1rem; line-height:1.6; color:var(--muted) }
+
+  /* Two-column layout for skills */
+  .two-col {
+    display:grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap:28px;
+  }
+
+  .list-bullets{
+    margin-top:14px;
+    list-style: disc inside;
+    color:var(--text);
+  }
+  .list-bullets li { margin:8px 0; color:var(--muted) }
+
+  /* Expertise / title */
+  .section-heading {
+    text-align:center;
+    margin-bottom:22px;
+    color:var(--text);
+    font-weight:800;
+    font-size:1.9rem;
+  }
+  .section-sub {
+    text-align:center;
+    color:var(--muted);
+    margin-bottom:22px;
+    font-size:1.02rem;
+  }
+
+  /* Footer */
+  footer {
+    margin:60px 0 120px;
+    text-align:center;
+    color:var(--muted);
+    font-size:0.95rem;
+  }
+
+  /* ===== Small screens ===== */
+  @media (max-width:900px){
+    .two-col{ grid-template-columns: 1fr; }
+    .hero h1{ font-size:2.1rem; }
+    .glass { padding:24px; border-radius:20px; }
+    .header{ width: calc(100% - 28px); left:14px; right:14px; }
+    .nav{ gap:18px; }
+    .brand{ left:12px; font-size:0.98rem; }
+    .header-cta{ right:12px; }
+    body{ padding-top:92px; }
+  }
+
+  /* ===== Tiny polish: subtle separators between sections ===== */
+  .section-sep{
+    position:relative; margin-top:64px;
+  }
+  .section-sep::after{
+    content:"";
+    display:block;
+    margin:24px auto 0;
+    width:120px;height:6px;border-radius:999px;
+    background:linear-gradient(90deg,var(--accent-1),var(--accent-2));
+    opacity:0.09;
+    filter: blur(6px);
+  }
+
+  /* ===== Utility spacing ===== */
+  .mb-10{ margin-bottom:10px; }
+  .mb-20{ margin-bottom:20px; }
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header" role="banner">
+    <a class="brand" href="#">Khushveer</a>
+
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Get In Touch</a>
+    </nav>
+
+    <div class="header-cta">
+      <a class="btn" href="#contact">Contact</a>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <!-- Hero -->
+    <section class="section hero" id="home">
+      <h1>Hi, I'm <span style="background:linear-gradient(90deg,var(--accent-1),var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent; font-weight:900;">Khushveer</span></h1>
+      <p class="lead">A passionate Computer Science student & developer who builds polished apps and visual experiences. I blend technical skill with creative storytelling and business sense.</p>
+    </section>
+
+    <!-- About (Glass) -->
+    <section class="section" id="about">
+      <div class="glass" role="region" aria-labelledby="about-title">
+        <h2 id="about-title" class="card-title">About Me</h2>
+        <div class="card-body">
+          <p style="color:var(--text); margin-bottom:12px;"><strong>Khushveer Choudhary</strong>, a passionate engineer who blends technical expertise with entrepreneurial focus. I’m currently pursuing B.Tech in Computer Science and Engineering at JNTUH.</p>
+
+          <p style="color:var(--muted); margin-bottom:10px;">Beyond code, I manage my family business and capture moments through photography & videography. I love exploring new places and telling stories visually.</p>
+
+          <p style="color:var(--muted); margin-top:8px;">#VisualStorytelling &nbsp; #Entrepreneurship &nbsp; #Travel</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Expertise / Skills -->
+    <section class="section" id="skills">
+      <h3 class="section-heading">Expertise</h3>
+      <p class="section-sub">Technical & non-technical skills I use to ship products.</p>
+
+      <div class="two-col">
+        <div class="glass">
+          <h4 class="card-title">Technical Skills</h4>
+          <ul class="list-bullets">
+            <li><strong>Core Development:</strong> Python, HTML, CSS, JavaScript</li>
+            <li><strong>AI & ML:</strong> Machine Learning basics, models & projects</li>
+            <li><strong>Web:</strong> Front-end development, React basics</li>
+          </ul>
+        </div>
+
+        <div class="glass">
+          <h4 class="card-title">Non-Technical Skills</h4>
+          <ul class="list-bullets">
+            <li><strong>Creativity:</strong> Photography & Videography</li>
+            <li><strong>Communication:</strong> Presentation & interpersonal skills</li>
+            <li><strong>Business:</strong> Entrepreneurial mindset & management</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects (example card) -->
+    <section class="section" id="projects">
+      <div class="glass">
+        <h3 class="card-title">Projects</h3>
+        <p class="card-body">Here are a few projects I've built. Replace these placeholders with your real project titles and links.</p>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; margin-top:20px;">
+          <div style="background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:14px; border-radius:14px; border:1px solid rgba(255,255,255,0.06);">
+            <strong>Driver Drowsiness</strong>
+            <div style="color:var(--muted); font-size:0.95rem; margin-top:8px;">Python • OpenCV • dlib</div>
+          </div>
+
+          <div style="background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:14px; border-radius:14px; border:1px solid rgba(255,255,255,0.06);">
+            <strong>Voice-to-Face</strong>
+            <div style="color:var(--muted); font-size:0.95rem; margin-top:8px;">Audio → Face generation (prototype)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section class="section" id="education">
+      <div class="glass">
+        <h3 class="card-title">Education</h3>
+        <div class="card-body">
+          <p><strong>B.Tech — CSE</strong> at Jawaharlal Nehru Technological University (JNTUH). Currently pursuing degree — projects & coursework in AI, web, and systems.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+      <div class="glass">
+        <h3 class="card-title">Get In Touch</h3>
+        <div class="card-body">
+          <p style="color:var(--muted)">Email: <a href="mailto:khusveerc@gmail.com" style="color:var(--accent-2); text-decoration:none;">khusveerc@gmail.com</a> • Phone: 7784891635</p>
+          <p style="color:var(--muted); margin-top:12px;">Want me to tidy this page or add animations/active-section highlights? Tell me which section to improve first and I’ll update the single file.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <strong>Khushveer</strong> • Built with care</div>
+    </footer>
+  </main>
+
+</body>
+</html>

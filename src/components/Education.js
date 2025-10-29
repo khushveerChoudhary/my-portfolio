@@ -1,5 +1,3 @@
-// EDUCATION Component (src/components/Education.js)
-// =========================================================================
 export const Education = () => (
     <section id="education" className="section section-education">
         <div className="container">
@@ -14,3 +12,4 @@ export const Education = () => (
         </div>
     </section>
 );
+export default Education;

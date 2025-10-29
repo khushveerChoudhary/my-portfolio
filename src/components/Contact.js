@@ -1,5 +1,3 @@
-// CONTACT Component (src/components/Contact.js)
-// =========================================================================
 export const Contact = () => (
     <section id="contact" className="section section-contact">
         <div className="container">

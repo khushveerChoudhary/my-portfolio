@@ -1,5 +1,3 @@
-// ABOUT Component (src/components/About.js)
-// =========================================================================
 export const About = () => (
     <section id="about" className="section section-about">
         <div className="container">
@@ -19,3 +17,4 @@ export const About = () => (
         </div>
     </section>
 );
+export default About;
