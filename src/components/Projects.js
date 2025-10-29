@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion'; 
 
-// Paste the missing data array here!
+// (Keep your projectData array here)
 const projectData = [
   {
     name: "Voice-to-Face Generator",
@@ -21,7 +21,8 @@ const projectData = [
     tech: ["Python", "OpenCV", "dlib", "winsound"]
   },
 ];
-const Projects = () => {
+// --
+export const Projects = () => {
     const cardAnimation = {
         initial: { opacity: 0, y: 50 },
         whileInView: { opacity: 1, y: 0, transition: { duration: 0.7 } },

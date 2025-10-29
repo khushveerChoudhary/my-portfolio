@@ -1,7 +1,6 @@
 // src/App.js
 
 import React from 'react';
-// src/App.js
 import './App.css'; 
 
 // *** CHANGE THESE IMPORTS ***

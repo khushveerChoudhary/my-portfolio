@@ -1,164 +1,657 @@
-@import url("https://fonts.googleapis.com/css?family=Inter:wght@400;600;900&display=swap");
-
+/*
+ * --------------------------------
+ * GLOBAL & TYPOGRAPHY (Dark/Purple Theme for Mica Look)
+ * --------------------------------
+ */
 :root {
-  --accent-purple: #a88bff;
-  --accent-blue: #6bc3ff;
-  --accent-pink: #ff80f9;
-
-  --text-color: #ffffff;
-  --glass-bg: rgba(255, 255, 255, 0.06);
-  --glass-border: rgba(255, 255, 255, 0.25);
-
-  --shadow-strong: rgba(0, 0, 0, 0.55);
-  --shadow-soft: rgba(0, 0, 0, 0.35);
+    --color-background: #110B1D; /* Deep Dark Purple */
+    --color-text: #E0E0E0;
+    --color-primary-accent: #8c4cc9; /* Vibrant Purple */
+    --color-secondary-background: rgba(30, 20, 45, 0.5); /* Semi-transparent for Mica */
+    --color-border: rgba(168, 85, 247, 0.4); /* Transparent accent border */
+    --font-family-primary: 'Poppins', sans-serif;
 }
+/* --- Color Variables (Triple Gradient Accents) --- */
+:root {
+    /* Base Dark Background Color */
+    --color-background-base: #110B1D; 
+    /* Subtler Primary Accent (Violet/Purple) */
+    --color-primary-accent: #A855F7; 
+    /* Secondary Accent (Pink/Magenta) */
+    --color-pink-hover: #F06292; 
+    /* Tertiary Accent (Blue, for the background mix) */
+    --color-blue-accent: #5C6BC0; 
 
+    /* Maximum Frost for Mica Panels */
+    --mica-bg-color: rgba(60, 40, 90, 0.55); 
+    --mica-blur: 35px; /* PUSHING THE BLUR TO THE MAX */
+}
+/* --- Deeper Gradient Background --- */
 body {
-  margin: 0;
-  font-family: "Inter", sans-serif;
-  color: var(--text-color);
-  overflow-x: hidden;
-  min-height: 100vh;
-
-  /* Purple - Blue smooth Siri gradient */
-  background: linear-gradient(
-    180deg,
-    #1c0435 0%,
-    #2d0b47 15%,
-    #3c165d 30%,
-    #2a1b79 45%,
-    #183b96 60%,
-    #0b4fa8 75%,
-    #0065c3 90%,
-    #007dd9 100%
-  );
+    /* ... existing font/color code ... */
+    
+    /* Re-setting the background for maximum depth and gradient effect */
+    background: radial-gradient(circle at 10% 20%, #3a1f64 0%, transparent 25%), /* Deeper purple 1 */
+                radial-gradient(circle at 80% 90%, #2f1d53 0%, transparent 35%), /* Deeper purple 2 */
+                linear-gradient(180deg, #180c29 0%, #221539 100%);
+    background-color: #180c29; /* Fallback color */
+    background-attachment: fixed; 
 }
 
-/* ✅ Liquid Glass Header */
+/* --- Stronger Mica/Glassmorphism Effect --- */
+.mica-panel {
+    background-color: rgba(30, 20, 45, 0.4); /* Slightly LESS opaque for more light pass-through */
+    border: 1px solid rgba(168, 85, 247, 0.3); /* Lighter border color for contrast */
+    border-radius: 40px;
+    backdrop-filter: blur(18px); /* INCREASE BLUR for maximum frost effect */
+    -webkit-backdrop-filter: blur(18px);
+    overflow: hidden;
+    /* This class is now applied to ALL box elements you wanted frosted. */
+}
+/* --- Mica Panel Definitions --- */
+.mica-panel {
+    background-color: var(--mica-bg-color); 
+    border: 1px solid rgba(168, 85, 247, 0.4); 
+    border-radius: 40px; 
+    backdrop-filter: blur(var(--mica-blur)); 
+    -webkit-backdrop-filter: blur(var(--mica-blur));
+    overflow: hidden; 
+    color: var(--color-text); 
+    /* Added text alignment here to fix any left-over center issues */
+    text-align: left;
+}
+
+/* Ensure the Header is also a strong Mica Panel */
 .header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-
-  backdrop-filter: blur(35px) saturate(200%);
-  -webkit-backdrop-filter: blur(35px) saturate(200%);
-  background: rgba(255, 255, 255, 0.06);
-  border-bottom: 1px solid var(--glass-border);
-
-  border-radius: 0 0 28px 28px;
-  box-shadow: 0 4px 25px var(--shadow-soft);
-  padding: 10px 0;
+    background-color: var(--mica-bg-color) !important; 
+    backdrop-filter: blur(var(--mica-blur)); 
+    -webkit-backdrop-filter: blur(var(--mica-blur));
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
-/* ✅ Header Items Center */
+/* --- The 'My Passions' Box Fix --- */
+.about-passion {
+    /* Ensure it directly uses the Mica styles and isn't inheriting a grey background */
+    /* Add the .mica-panel class to this element in its component file (About.js) */
+    /* If it's already using .mica-panel, this will be fixed */
+    padding: 30px; /* Ensure padding is consistent */
+}
+
+/* --- Header Text Contrast Fix --- */
+.nav-link {
+    color: var(--color-text) !important;
+}
+/* --- New Color Variables (for Pink/Magenta) --- */
+:root {
+    /* Retain your subtle purple accent */
+    --color-primary-accent: #A855F7; 
+    /* Define a new, brighter Pink/Magenta for hover states */
+    --color-pink-hover: #F06292; 
+}
+
+/* --- Fix 1: Set the initial logo color to the primary accent --- */
+.logo {
+    /* Set the initial color to the primary purple accent */
+    color: var(--color-primary-accent) !important; 
+    transition: color 0.3s ease-in-out;
+}
+
+/* --- Fix 2: Set the specific hover state to Pink/Magenta --- */
+.logo:hover {
+    /* Change the color on hover to the bright pink */
+    color: var(--color-pink-hover) !important;
+}
+
+/* --- Ensure All Link Hovers are Pink/Magenta --- */
+a:hover {
+    /* Apply the pink hover to all general links (like 'View My Work' button, etc.) */
+    color: var(--color-pink-hover);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* --- Triple-Gradient Dynamic Background --- */
+body {
+    background-color: var(--color-background-base); /* Base dark color */
+    color: var(--color-text);
+    line-height: 1.6;
+    scroll-behavior: smooth;
+    
+    background-image: 
+        /* Top Left - Blue/Violet Mix */
+        
+        linear-gradient(180deg, #110B1D 0%, #1a1a3a 100%);
+    
+    background-attachment: fixed; /* KEEPS THE GRADIENT FIXED while content scrolls */
+}
+body {
+    font-family: var(--font-family-primary);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+/* Base styles for Mica/Glassmorphism effect */
+.mica-panel {
+    background-color: var(--color-secondary-background);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    /* The Mica/Frosted Glass Effect */
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px); 
+}
+
+/* Re-apply Mica to key areas */
+.header, .project-card, .education-card, .skill-category, .about-passion {
+    @extend .mica-panel;
+}
+
+/* ... (Keep the rest of the existing CSS from the previous dark theme starting here) ... */
+/* You will need to manually copy the rest of the previous CSS starting from .container and beyond, 
+   but ensuring the .mica-panel styling is applied to the key components as shown above. */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section {
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: var(--color-text);
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--color-primary-accent);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+a {
+    color: var(--color-primary-accent);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #ffb74d; /* Lighter shade on hover */
+}
+
+/*
+ * --------------------------------
+ * HEADER & NAVIGATION
+ * --------------------------------
+ */
+.header {
+    background-color: var(--color-secondary-background);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
 .nav-container {
-  display: flex;
-  justify-content: center;
-  gap: 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-primary-accent);
 }
 
 .nav-menu {
-  display: flex;
-  list-style: none;
-  gap: 55px;
-  padding: 0;
-  margin: 10px 0;
+    display: flex;
+    gap: 30px;
 }
 
 .nav-link {
-  text-decoration: none;
-  font-size: 16px;
-  color: var(--text-color);
-  font-weight: 600;
-  transition: 0.25s ease;
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 5px 0;
+    color: var(--color-text);
+    position: relative;
 }
 
-.nav-link:hover {
-  color: var(--accent-blue);
-  text-shadow: 0 0 18px var(--accent-blue);
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-primary-accent);
+    transition: width 0.3s ease-in-out;
 }
 
-/* ✅ Sections Spacing */
-.section {
-  padding: 140px 18px;
-  max-width: 1100px;
-  margin: 0 auto;
+.nav-link:hover::after {
+    width: 100%;
 }
 
-/* ✅ All Titles Center */
-.section-title,
-.title,
-.subtitle,
-.pitch,
-.greeting,
-h1, h2, h3 {
-  text-align: center;
+.nav-contact-btn {
+    border: 1px solid var(--color-primary-accent);
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-/* ✅ Fully Glass UI Panels */
-.mica-panel,
+.nav-contact-btn:hover {
+    background-color: var(--color-primary-accent);
+    color: var(--color-background);
+}
+
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--color-text);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/*
+ * --------------------------------
+ * HOME / HERO SECTION
+ * --------------------------------
+ */
+.section-home {
+    padding: 150px 0 100px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.home-content {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+}
+
+.greeting {
+    font-size: 1.2rem;
+    color: var(--color-primary-accent);
+    margin-bottom: 10px;
+}
+
+.title {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color-border);
+    margin-bottom: 20px;
+}
+
+.pitch {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--color-primary-accent);
+    color: var(--color-background);
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: opacity 0.3s;
+}
+
+.cta-button:hover {
+    opacity: 0.9;
+    color: var(--color-background); /* Override default hover color */
+}
+
+/*
+ * --------------------------------
+ * ABOUT SECTION
+ * --------------------------------
+ */
+.section-about {
+    background-color: var(--color-secondary-background);
+}
+
+.about-grid {
+    display: flex;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    align-items: start;
+    flex-direction: column;
+    align-items: center; /* Center the entire block */
+}
+
+.about-bio p {
+    margin-bottom: 15px;
+    font-size: 1rem;
+    text-align: left; /* Keep text readable, but center the panel itself */
+    width: 100%;
+    max-width: 700px; /* Constrain width for centering */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about-passion {
+    padding: 20px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background-color: #2a2a2a;
+    text-align: left; /* Keep text readable, but center the panel itself */
+    width: 100%;
+    max-width: 700px; /* Constrain width for centering */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.passion-title {
+    font-size: 1.4rem;
+    color: var(--color-primary-accent);
+    margin-bottom: 15px;
+}
+
+.hobby-tag {
+    font-style: italic;
+    color: #999999;
+    margin-top: 15px;
+}
+
+/*
+ * --------------------------------
+ * SKILLS SECTION
+ * --------------------------------
+ */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding-top: 20px;
+}
+
+.skill-category {
+    background-color: var(--color-secondary-background);
+    padding: 30px;
+    border-radius: 8px;
+    border-left: 5px solid var(--color-primary-accent);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.skill-category h3 {
+    font-size: 1.5rem;
+    color: var(--color-text);
+    margin-bottom: 20px;
+}
+
+.skill-category ul {
+    list-style: none;
+    padding: 0;
+}
+
+.skill-category li {
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--color-border);
+    font-size: 1rem;
+}
+
+.skill-category li:last-child {
+    border-bottom: none;
+}
+
+/*
+ * --------------------------------
+ * PROJECTS SECTION
+ * --------------------------------
+ */
 .project-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(35px) saturate(220%);
-  -webkit-backdrop-filter: blur(35px) saturate(220%);
-  
-  border: 1px solid var(--glass-border);
-  border-radius: 35px;
-  padding: 35px;
-  margin-bottom: 60px;
-
-  box-shadow:
-    0 10px 35px var(--shadow-strong),
-    inset 0 0 35px rgba(255, 255, 255, 0.08);
-  transition: 0.3s ease-in-out;
+    background-color: var(--color-secondary-background);
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    border: 1px solid var(--color-border);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-/* Hover Glow */
-.mica-panel:hover,
 .project-card:hover {
-  transform: translateY(-6px) scale(1.015);
-  box-shadow:
-    0 15px 50px rgba(0,0,0,0.7),
-    inset 0 0 45px rgba(255,255,255,0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
 }
 
-/* ✅ Buttons Neon Purple/Blue */
-.btn-primary {
-  display: inline-block;
-  background: linear-gradient(90deg, var(--accent-purple), var(--accent-blue));
-  padding: 14px 30px;
-  border-radius: 14px;
-  color: #fff;
-  font-weight: 700;
-  text-decoration: none;
-  font-size: 17px;
-  transition: 0.3s ease-out;
+.project-card h3 {
+    color: var(--color-primary-accent);
+    font-size: 1.6rem;
+    margin-bottom: 10px;
 }
 
-.btn-primary:hover {
-  filter: brightness(1.3);
-  transform: translateY(-4px);
-  box-shadow: 0 0 22px var(--accent-blue);
+.project-desc {
+    margin-bottom: 15px;
+    font-size: 1rem;
+    color: #B0B0B0;
 }
 
-/* ✅ Project Grid Alignment */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 45px;
+.project-tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
-/* ✅ Smooth Mobile Fixes */
+.project-tech-list span {
+    background-color: #333333;
+    color: var(--color-primary-accent);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.project-link {
+    font-weight: 600;
+}
+
+/*
+ * --------------------------------
+ * EDUCATION SECTION
+ * --------------------------------
+ */
+.section-education {
+    background-color: var(--color-background);
+}
+
+.education-card {
+    background-color: var(--color-secondary-background);
+    padding: 30px;
+    border-radius: 8px;
+    border-left: 5px solid var(--color-primary-accent);
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left; /* Keep text readable, but center the panel itself */
+    width: 100%;
+    max-width: 700px; /* Constrain width for centering */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.edu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.edu-date {
+    font-style: italic;
+    color: var(--color-primary-accent);
+    font-weight: 600;
+}
+
+.edu-degree {
+    font-size: 1.4rem;
+    color: var(--color-text);
+}
+
+.edu-institution {
+    color: #B0B0B0;
+    font-size: 1.1rem;
+}
+
+
+/*
+ * --------------------------------
+ * CONTACT SECTION
+ * --------------------------------
+ */
+.section-contact {
+    background-color: var(--color-secondary-background);
+}
+
+.contact-pitch {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-form {
+    max-width: 500px;
+    margin: 0 auto;
+    display: grid;
+    gap: 20px;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid var(--color-border);
+    border-radius: 5px;
+    background-color: #2a2a2a;
+    color: var(--color-text);
+    font-family: var(--font-family-primary);
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--color-primary-accent);
+    outline: none;
+}
+
+.form-note {
+    font-size: 0.8rem;
+    text-align: center;
+    color: #999;
+}
+
+
+/*
+ * --------------------------------
+ * FOOTER
+ * --------------------------------
+ */
+.footer {
+    background-color: var(--color-background);
+    padding: 20px 0;
+    text-align: center;
+    border-top: 1px solid var(--color-border);
+}
+
+.footer p {
+    color: #999;
+    font-size: 0.9rem;
+}
+
+
+/*
+ * --------------------------------
+ * MEDIA QUERIES (RESPONSIVENESS)
+ * --------------------------------
+ */
 @media (max-width: 900px) {
-  .nav-menu {
-    gap: 28px;
-  }
-  .section {
-    padding: 120px 20px;
-  }
-  .mica-panel {
-    border-radius: 28px;
-    padding: 28px;
-  }
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: 60px 0;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: var(--color-secondary-background);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        padding: 10px 0;
+        text-align: center;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-link {
+        padding: 15px 0;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .nav-link:last-child {
+        border-bottom: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .title {
+        font-size: 3rem;
+    }
+
+    .subtitle {
+        font-size: 1.5rem;
+    }
 }
